@@ -4,9 +4,11 @@
 # a=2
 # b=3
 
+
 def wsgi_app(environ,start_response):
     status = "200 OK"
-    headers = [('Content-Type','text/plain')]
-    body = [ (bytes(i, 'ascii') + b'\n') for i in environ['QUERY_STRING'].split('&') ]
-    start_response(status, headers)
-    return [body]
+    response_headers = [('Content-type','text/plain')]
+    response_body = [ (bytes(i, 'ascii') + b'\n') for i in environ['QUERY_STRING'].split('&') ]
+    start_response(status, response_headers)
+    return [response_body]
+
