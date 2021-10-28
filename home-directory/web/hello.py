@@ -11,4 +11,5 @@ def wsgi_app(environ,start_response):
     response_body = [ (bytes(i, 'ascii') + b'\n') for i in environ['QUERY_STRING'].split('&') ]
     start_response(status, response_headers)
     return [response_body]
+#   return iter ([body.encode('utf-8')])
 
