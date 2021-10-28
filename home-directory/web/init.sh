@@ -5,6 +5,8 @@ sudo /etc/init.d/nginx restart
 
 # restarting gunicorn
 sudo /etc/init.d/gunicorn restart
-gunicorn --bind='0.0.0.0:8080' hello:wsgi_app
 
+#  gunicorn [OPTIONS] [WSGI_APP]
+#  path to wsgi app looks like this: folder.file-without-extension:function_name
+gunicorn --bind='0.0.0.0:8080' web.hello:wsgi_app
 
