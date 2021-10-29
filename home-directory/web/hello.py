@@ -8,8 +8,10 @@
 def wsgi_app(environ,start_response):
     status = "200 OK"
     response_headers = [('Content-type','text/plain')]
-    response_body = [ (bytes(i, 'ascii') + b'\n') for i in environ['QUERY_STRING'].split('&') ]
+    request_list= environ['QUERY_STRING'].split('&') 
+    response_body = ''
+    for i in request_list:
+        response_body += i+'\n'
     start_response(status, response_headers)
-    return [response_body]
-#   return iter ([body.encode('utf-8')])
+    return iter ([response_body.encode('utf-8')])
 
