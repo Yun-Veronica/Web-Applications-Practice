@@ -9,4 +9,6 @@ sudo /etc/init.d/gunicorn restart
 #  gunicorn [OPTIONS] [WSGI_APP]
 #  path to wsgi app looks like this: folder.file-without-extension:function_name
 gunicorn --bind='0.0.0.0:8080' web.hello:wsgi_app
+gunicorn -c etc/django_conf.py ask.wsgi                                      
+
 
