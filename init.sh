@@ -4,9 +4,8 @@ sudo rm -rf /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
 
 # restarting gunicorn
-# sudo /etc/init.d/gunicorn restart
+sudo /etc/init.d/gunicorn restart
 
-gunicorn -c /etc/gunicorn.d/guni-dj.py  web.ask.ask.wsgi
 
 #  gunicorn [OPTIONS] [WSGI_APP]
 #  path to wsgi app looks like this: folder.file-without-extension:function_name
