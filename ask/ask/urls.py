@@ -19,7 +19,8 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', 'admin.site.urls'),
-    url(r'^ş', 'qa.views.test', name='home'),
+#     url(r'^ş', 'qa.views.test', name='home'),
+    url(r'^ş', 'web.ask.qa.views.test', name='home'),
     url(r'^login/.*$', 'qa.views.test'),
     url(r'^signup/.*$', 'qa.views.test'),
     url(r'^questions/\d+/$','qa.views.test'),
