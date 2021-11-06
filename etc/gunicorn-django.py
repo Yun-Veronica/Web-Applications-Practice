@@ -1,8 +1,15 @@
-bind = "0.0.0.0:8000"
-pidfile = "/home/box/web/gunicorn/gunicorn.pid"
-accesslog = "/home/box/web/gunicorn/access.log"
-errorlog = "/home/box/web/gunicorn/error.log"
-working_dir = "/home/box/web/ask/ask"
-workers = 16
-timeout = 60
-args='/home/box/web/ask/ask/wsgi:application'
+CONFIG = {                                                                                                  
+    'mode': 'wsgi',                                                                                      
+    'working_dir': '/home/box/web/ask',                                                                      
+    # 'python': '/usr/bin/python',                                                                          
+    'args': (                                                                                              
+        '--bind=0.0.0.0:8000',
+  '--daemon',
+        '--workers=2',                                                                                    
+        '--timeout=5',
+  '--access-logfile=gunicorn.access.log',
+  '--error-logfile=gunicorn.error.log',
+  '--log-level=info',
+        'ask.wsgi:application',                                                                                      
+    ),                                                                                                      
+}
