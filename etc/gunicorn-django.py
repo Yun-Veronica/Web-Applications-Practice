@@ -5,8 +5,6 @@ CONFIG = {
     'args': (                                                                                              
         '--bind=0.0.0.0:8000',
   '--daemon',
-        '--workers=2',                                                                                    
-        '--timeout=5',
   '--access-logfile=gunicorn.access.log',
   '--error-logfile=gunicorn.error.log',
   '--log-level=info',
