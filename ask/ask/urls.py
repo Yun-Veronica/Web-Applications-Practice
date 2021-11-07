@@ -15,17 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url,patterns
 from django.contrib import admin
-from qa.views import test
-admin.autodiscover()
+from . import views
 
 urlpatterns = [
     url(r'^admin/', 'admin.site.urls'),
-#     url(r'^ş', 'views.test', name='home'),
-    url(r'^/$', 'test', name='home'),
-    url(r'^login/.*$', 'test'),
-    url(r'^signup/.*$', 'test'),
-    url(r'^questions/\d+/$','test'),
-    url(r'^ask/.*$', 'test'),
-    url(r'^popular/.*$', 'test'),
-    url(r'^new/.*$', 'test')
+    url(r'^/$', 'views.test()', name='home'),
+    url(r'^login/.*$', 'views.test()'),
+    url(r'^signup/.*$', 'views.test()'),
+    url(r'^questions/\d+/$','views.test()'),
+    url(r'^ask/.*$', 'views.test()'),
+    url(r'^popular/.*$', 'views.test()'),
+    url(r'^new/.*$', 'views.test()')
 ]
