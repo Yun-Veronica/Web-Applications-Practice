@@ -13,4 +13,4 @@ gunicorn --bind='0.0.0.0:8000' web.hello:wsgi_app
 sudo ln -sf /home/box/web/etc/gunicorn-django.py /etc/gunicorn.d/test.py
 # gunicorn --bind='0.0.0.0:8080' web.ask.ask.wsgi:application
 sudo gunicorn -c /home/box/web/etc/gunicorn-django.py web.ask.wsgi:application
-
+# cd /home/box/web/ask && sudp gunicorn ask.wsgi
