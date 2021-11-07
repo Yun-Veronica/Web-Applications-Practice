@@ -79,6 +79,8 @@ DATABASES = {
 }
 
 
+SECRET_KEY = '+k=^&uk3@3u^abc57#p#=6-zdnx74iw%$4&hmd-l4#4n#p@kf%'
+
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
