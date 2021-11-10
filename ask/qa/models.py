@@ -1,8 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
-user = django.contrib.auth.models.User
 
 class Question(models.Model):
   title = models.CharField(max_length=255)
@@ -10,7 +9,7 @@ class Question(models.Model):
   added_at = models.DateTimeField()
   rating = models.IntegerField()
   author = models.CharField(max_length=50)
-  likes  = models.ManytoManyField(user)
+  likes  = models.ForeignKey(User)
   
   def __unicode__(self):
     return self.title
@@ -26,13 +25,13 @@ class Answer(models.Model):
   text = models.TextField()
   added_at = models.DateTimeField()
   author = models.CharField(max_length=50)
-  question = models.OnetoOneField(questionID)
+  question = models.OnetoOneField(Question)
    
     def __unicode__(self):
-    return self.title
+        return self.title
   
-  def get_absolute_url(self):
-    return '/answer/%d/' %self.pk
+    def get_absolute_url(self):
+        return '/answer/%d/' %self.pk
 
 
 class QuestionManager(models.Manager):
