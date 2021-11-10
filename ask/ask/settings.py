@@ -73,11 +73,14 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.path.join(BASE_DIR, 'db.mysql'),
+        'USER': 'box',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
-
 
 SECRET_KEY = '+k=^&uk3@3u^abc57#p#=6-zdnx74iw%$4&hmd-l4#4n#p@kf%'
 
