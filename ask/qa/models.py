@@ -8,8 +8,8 @@ class Question(models.Model):
   text = models.TextField()
   added_at = models.DateTimeField()
   rating = models.IntegerField()
-  author = models.CharField(max_length=50)
-  likes  = models.ForeignKey(User)
+  author = models.ForeignKey(User, default= 'x')
+  likes  = models.ManyToMAnyField(User)
   
   def __unicode__(self):
     return self.title
@@ -24,8 +24,8 @@ class Question(models.Model):
 class Answer(models.Model):
   text = models.TextField()
   added_at = models.DateTimeField()
-  author = models.CharField(max_length=50)
-  question = models.OnetoOneField(Question)
+  author = models.ForeignKey(User)
+  question = models.ForeignKey(Question)
    
     def __unicode__(self):
         return self.title
