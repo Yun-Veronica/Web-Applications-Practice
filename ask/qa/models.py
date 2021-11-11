@@ -27,11 +27,11 @@ class Answer(models.Model):
   author = models.ForeignKey(User)
   question = models.ForeignKey(Question)
    
-    def __unicode__(self):
-        return self.title
+  def __unicode__(self):
+      return self.title
   
-    def get_absolute_url(self):
-        return '/answer/%d/' %self.pk
+  def get_absolute_url(self):
+      return '/answer/%d/' %self.pk
 
 
 class QuestionManager(models.Manager):
