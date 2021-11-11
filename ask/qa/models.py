@@ -8,8 +8,8 @@ class Question(models.Model):
   text = models.TextField()
   added_at = models.DateTimeField()
   rating = models.IntegerField()
-  author = models.ForeignKey(User, default= 'x')
-  likes  = models.ManyToMAnyField(User)
+  author = models.ForeignKey(User)
+  likes  = models.ManyToManyField(User, related_name='users_likes')
   
   def __unicode__(self):
     return self.title
