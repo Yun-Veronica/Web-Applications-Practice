@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
   def new(self):
-    return self.order_by('added_at')[:20]
+    return self.order_by('added_at')
     
   def popular(self):
-    return self.order_by('rating')
+    return self.order_by('-rating')
 
 class Question(models.Model):
   title = models.CharField(max_length=255)
@@ -17,7 +17,8 @@ class Question(models.Model):
   author = models.ForeignKey(User)
   likes  = models.ManyToManyField(User, related_name='users_likes')
   objects = QuestionManager()
-  def __unicode__(self):
+
+  def __str__(self):
     return self.title
   
   def get_absolute_url(self):
@@ -33,8 +34,8 @@ class Answer(models.Model):
   author = models.ForeignKey(User)
   question = models.ForeignKey(Question)
    
-  def __unicode__(self):
-      return self.title
+  def __str__(self):
+      return self.text
   
   def get_absolute_url(self):
       return '/answer/%d/' %self.pk

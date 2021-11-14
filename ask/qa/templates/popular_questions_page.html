@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Questions&Answers</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Questions&Answers</a></h1>
+        </div>
+        <div class="Questions">
+            {% for post in posts %}
+                <p><a href="questions/">{{ post.title }}</a></p>
+            {% end_for %}
+        </div>
+    </body>
+</html>

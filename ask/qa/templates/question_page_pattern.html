@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Questions&Answers</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Questions&Answers</a></h1>
+        </div>
+        <div class="Question">
+            {% for post in posts %}
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            {% endfor %}
+        </div>
+        <div class="Answers">
+            {% for answer in Answer.question==posts %}
+            <p>{{ answer.text|linebreaksbr }}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>

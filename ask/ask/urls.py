@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from qa.views import test 
+from qa import views
+
+# custom 404 error
+handler404 = 'qa.views.handler404'
+
 
 urlpatterns = [
-    url(r'^$', test),
-    url(r'^login/.*$', test),
-    url(r'^signup/.*$', test),
-    url(r'^questions/\d+/$',test),
-    url(r'^ask/.*$', test),
-    url(r'^popular/.*$', test),
-    url(r'^new/.*$',test)
+    url(r'^$', views.main_page, name='main_page'),
+    url(r'^login/.*$', views.test),
+    url(r'^signup/.*$', views.test),
+    url(r'^questions/\d+/$',views.question_page),
+    url(r'^ask/.*$', views.test),
+    url(r'^popular/\d+/.*$', views.popular_pages),
+    url(r'^new/.*$',views.test)
 ]
