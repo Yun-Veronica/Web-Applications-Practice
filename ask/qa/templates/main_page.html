@@ -7,9 +7,10 @@
             <h1><a href="/">Questions&Answers</a></h1>
         </div>
         <div class="Questions">
-            {% for post in posts %}
-                <p><a href="questions/">{{ post.title }}</a></p>
-            {% end_for %}
+                {% for post in posts %}
+                <a href="questions/">{{ post.title }}</a>
+                <a href="/?page={{ page }}">Далее</a>
+                {% end_for %}
         </div>
     </body>
 </html>

@@ -17,16 +17,17 @@ def handler404(request, *args, **argv):
     return response
 
 
-def question_page(request, id):
+def question_page(request,page_id):
     'Example: URL = /question/5/'
     try:
-        question = Question.objects.get(pk=id)
+        id = request.GET.get('id')
+        question = Question.objects.get(pk=page_id)
     except Question.objects.DoesNotExist():
         raise Http404
     return render(request, 'qa/question_page_pattern.html', {'posts': question, })
 
 
-def main_page(request, page_id):
+def main_page(request):
     'Example: URL = /?page=2'
     '''Главная страница. Список "новых" вопросов.
      Т.е. последний заданный вопрос - первый в списке. 
@@ -36,10 +37,9 @@ def main_page(request, page_id):
     В списке вопросов должны выводится заголовки (title) вопросов и ссылки на страницы отдельных вопросов.'''
     # Постраничное    отображение
     posts = Question.objects.new()
-
     try:
         limit = request.GET.get('limit', 10)
-        page = request.GET.get('page', page_id)
+        page = request.GET.get('page')
         paginator = Paginator(posts, limit)
         paginator.base_url = '/?page='
         page = paginator.page(page)  # Page
@@ -61,7 +61,7 @@ def popular_pages(request, page_id, *args, **kwargs):
         limit = request.GET.get('limit', 10)
         page = request.GET.get('page', page_id)
         paginator = Paginator(posts, limit)
-        paginator.base_url = '/?page='
+        paginator.base_url = '/popular/?page='
         page = paginator.page(page)
 
     except Question.objects.DoesNotExist():
