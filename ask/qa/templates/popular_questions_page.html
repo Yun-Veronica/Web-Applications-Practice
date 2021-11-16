@@ -10,6 +10,17 @@
             {% for post in posts %}
                 <p><a href="questions/">{{ post.title }}</a></p>
             {% end_for %}
+            <nav><ul class="pagination">
+                {% for p in paginator page_range %}
+                    {% if p.number == page.number %}
+                        <li class="active">        </li>
+                    {% else %}
+                        <li>
+                    {% endif %}
+                        <a href="{{ paginator.baseurl }}{{ p.number }}">{{ p.number }}</a>
+                        </li>
+                {% end_for %}
+            </ul></nav>
         </div>
     </body>
 </html>
