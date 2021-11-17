@@ -10,9 +10,9 @@
                 {% for post in posts %}
                 <a href="questions/">{{ post.title }}</a>
                 <a href="/?page={{ page }}">Далее</a>
-                {% end_for %}
+                {% endfor %}
                 <nav><ul class="pagination">
-                    {% for p in paginator page_range %}
+                    {% for p in paginator.page_range %}
                         {% if p.number == page.number %}
                             <li class="active">        </li>
                         {% else %}
@@ -20,7 +20,7 @@
                         {% endif %}
                             <a href="{{ paginator.baseurl }}{{ p.number }}">{{ p.number }}</a>
                             </li>
-                    {% end_for %}
+                    {% endfor %}
                  </ul></nav>
         </div>
     </body>

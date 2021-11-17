@@ -2,7 +2,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.template import RequestContext
-from ask.qa.models import Question, QuestionManager
+from qa.models import Question, QuestionManager
 from django.core.paginator import Paginator
 
 
@@ -24,7 +24,7 @@ def question_page(request,page_id):
         question = Question.objects.get(pk=page_id)
     except Question.objects.DoesNotExist():
         raise Http404
-    return render(request, 'qa/question_page_pattern.html', {'posts': question, })
+    return render(request, 'question_page_pattern.html', {'posts': question, })
 
 
 def main_page(request):
@@ -42,10 +42,10 @@ def main_page(request):
         page = request.GET.get('page')
         paginator = Paginator(posts, limit)
         paginator.base_url = '/?page='
-        page = paginator.page(page)  # Page
-    except posts.DoesNotExist():
-        raise Http404
-    return render(request, 'qa/main_page.html', {posts: page.object_list, paginator: paginator, page: page, })
+        page = paginator.page(1)  # Page
+    except Question.objects.DoesNotExist():
+        raise Http404(Exception)
+    return render(request, 'main_page.html', {posts: page.object_list, paginator: paginator, page: page, })
 
 
 def popular_pages(request, page_id, *args, **kwargs):
@@ -66,7 +66,7 @@ def popular_pages(request, page_id, *args, **kwargs):
 
     except Question.objects.DoesNotExist():
         raise Http404
-    return render(request, 'qa/main_page.html', {posts: page.object_list, paginator: paginator, page: page, })
+    return render(request, 'popular_questions_page.html', {posts: page.object_list, paginator: paginator, page: page, })
 
 # Base view  as example
 # Model - model name of  app (example)

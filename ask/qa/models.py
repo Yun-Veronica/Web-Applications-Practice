@@ -17,13 +17,12 @@ class Question(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(blank=True, auto_now_add=True)
     rating = models.IntegerField(default=0, null=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='users_likes')
     objects = QuestionManager()
 
     def __str__(self):
         return self.title
-
     def get_absolute_url(self):
         return '/question/%d/' % self.pk
 
@@ -34,8 +33,8 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField()
-    author = models.ForeignKey(User)
-    question = models.ForeignKey(Question)
+    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text

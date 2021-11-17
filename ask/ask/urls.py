@@ -18,15 +18,15 @@ from django.contrib import admin
 from qa import views
 
 # custom 404 error
-handler404 = 'qa.views.handler404'
-
+# handler404 = 'qa.views.handler404'
 
 urlpatterns = [
+    url('404', views.handler404),
     url(r'^$', views.main_page, name='main_page'),
     url(r'^login/.*$', views.test),
     url(r'^signup/.*$', views.test),
-    url(r'^questions/\d+/$',views.question_page),
+    url(r'^questions/\d+/$', views.question_page),
     url(r'^ask/.*$', views.test),
     url(r'^popular/\d+/.*$', views.popular_pages),
-    url(r'^new/.*$',views.test)
+    url(r'^new/.*$', views.test)
 ]

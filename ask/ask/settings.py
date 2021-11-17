@@ -28,8 +28,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    #'ask.qa',
-    'qa',
+     'qa',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +52,7 @@ ROOT_URLCONF = 'ask.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'qa/templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'qa/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +66,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ask.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -83,6 +81,7 @@ DATABASES = {
         'PORT': ''
     }
 }
+
 
 SECRET_KEY = '+k=^&uk3@3u^abc57#p#=6-zdnx74iw%$4&hmd-l4#4n#p@kf%'
 
