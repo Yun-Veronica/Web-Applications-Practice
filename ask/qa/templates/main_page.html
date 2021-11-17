@@ -11,7 +11,7 @@
                     <p><a href="questions/">{{ post.title }}</a></p>
                 {% endfor %}
                 <nav><ul class="pagination">
-<!--                                    <a href="/?page={{ page }}">Далее</a>-->
+<!--<a href="/?page={{ page }}">Далее</a>-->
 
                     {% for p in paginator.page_range %}
                         {% if p.number == page.number %}

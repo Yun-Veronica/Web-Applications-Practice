@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from qa.models import Question, QuestionManager
 from django.core.paginator import Paginator
+from django.template import loader
 
 
 def test(request, *args, **kwargs):
@@ -32,11 +33,12 @@ def main_page(request):
         limit = request.GET.get('limit', 10)
         page = request.GET.get('page')
         paginator = Paginator(posts, limit)
+        template= loader.get_template('main_page.html')
         paginator.base_url = '/?page='
         page = paginator.page(1)  # Page
     except Question.objects.DoesNotExist():
         raise Http404(Exception)
-    return render(request, 'main_page.html', {posts: page.object_list, paginator: paginator, page: page, })
+    return HttpResponse(template.render(request, 'main_page.html', {posts: page.object_list, paginator: paginator, page: page, }))
 
 
 def popular_pages(request, page_id, *args, **kwargs):
