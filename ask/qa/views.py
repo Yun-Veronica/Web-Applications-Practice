@@ -18,7 +18,6 @@ def handler404(request, *args, **argv):
 
 
 def question_page(request,page_id):
-    'Example: URL = /question/5/'
     try:
         id = request.GET.get('id')
         question = Question.objects.get(pk=page_id)
@@ -28,14 +27,6 @@ def question_page(request,page_id):
 
 
 def main_page(request):
-    'Example: URL = /?page=2'
-    '''Главная страница. Список "новых" вопросов.
-     Т.е. последний заданный вопрос - первый в списке. 
-     Необходимо использовать метод new менеджера QuestionManager.
-     На этой странице должна работать пагинация. Номер страницы указывается в GET параметре page. 
-    На страницу выводится по 10 вопросов.
-    В списке вопросов должны выводится заголовки (title) вопросов и ссылки на страницы отдельных вопросов.'''
-    # Постраничное    отображение
     posts = Question.objects.new()
     try:
         limit = request.GET.get('limit', 10)
@@ -49,13 +40,6 @@ def main_page(request):
 
 
 def popular_pages(request, page_id, *args, **kwargs):
-    'Example: URL = /popular/?page=3'
-    '''Cписок "популярных" вопросов. 
-    Сортировка по убыванию поля rating. 
-    Необходимо использовать метод popular менеджера QuestionManager. 
-    На этой странице должна работать пагинация. Номер страницы указывается в GET параметре page.  
-    На страницу выводится по 10 вопросов.
-    В списке вопросов должны выводится заголовки (title) вопросов и ссылки на страницы отдельных вопросов.'''
     try:
         posts = Question.objects.popular()
         limit = request.GET.get('limit', 10)
