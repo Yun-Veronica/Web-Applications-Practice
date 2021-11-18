@@ -18,7 +18,7 @@ def handler404(request, *args, **argv):
     return response
 
 
-def question_page(request,page_id):
+def question_page(request, page_id):
     try:
         id = request.GET.get('id')
         question = Question.objects.get(pk=page_id)
@@ -33,12 +33,13 @@ def main_page(request):
         limit = request.GET.get('limit', 10)
         page = request.GET.get('page')
         paginator = Paginator(posts, limit)
-        template= loader.get_template('main_page.html')
+        template = loader.get_template('main_page.html')
         paginator.base_url = '/?page='
         page = paginator.page(1)  # Page
     except Question.objects.DoesNotExist():
         raise Http404(Exception)
-    return HttpResponse(template.render(request, 'main_page.html', {posts: page.object_list, paginator: paginator, page: page, }))
+    return HttpResponse(
+        template.render({posts: page.object_list, paginator: paginator, page: page, request: request}))
 
 
 def popular_pages(request, page_id, *args, **kwargs):
