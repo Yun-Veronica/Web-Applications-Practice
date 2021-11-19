@@ -24,11 +24,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
-     'qa',
+    'qa',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,14 +73,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'NAME': 'qadb',
+        # 'NAME': 'qadb',
         'USER': 'box',
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': ''
     }
 }
-
 
 SECRET_KEY = '+k=^&uk3@3u^abc57#p#=6-zdnx74iw%$4&hmd-l4#4n#p@kf%'
 
@@ -103,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -116,7 +113,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

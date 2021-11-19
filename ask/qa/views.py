@@ -42,17 +42,20 @@ def main_page(request):
         template.render({posts: page.object_list, paginator: paginator, page: page, request: request}))
 
 
-def popular_pages(request, page_id, *args, **kwargs):
+def popular_pages(request, *args, **kwargs):
+    page_num = request.GET.get('page')
     try:
+        page_num=request.split('/')[1]
         posts = Question.objects.popular()
         limit = request.GET.get('limit', 10)
-        page = request.GET.get('page', page_id)
+        page = request.GET.get(1)
         paginator = Paginator(posts, limit)
         paginator.base_url = '/popular/?page='
         page = paginator.page(page)
 
-    except Question.objects.DoesNotExist():
-        raise Http404
+    except :
+        raise Http404(page_num)
+
     return render(request, 'popular_questions_page.html', {posts: page.object_list, paginator: paginator, page: page, })
 
 # Base view  as example
