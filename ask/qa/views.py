@@ -39,7 +39,7 @@ def main_page(request):
     except Question.objects.DoesNotExist():
         raise Http404(Exception)
     return HttpResponse(
-        template.render({posts: page.object_list, paginator: paginator, page: page, request: request}))
+        template.render({'posts': page.object_list, 'paginator': paginator, 'page': page, 'request': request}))
 
 
 def popular_pages(request, *args, **kwargs):
@@ -56,7 +56,7 @@ def popular_pages(request, *args, **kwargs):
     except :
         raise Http404(page_num)
 
-    return render(request, 'popular_questions_page.html', {posts: page.object_list, paginator: paginator, page: page, })
+    return render(request, 'popular_questions_page.html', {'posts': page.object_list, 'paginator': paginator, 'page': page, })
 
 # Base view  as example
 # Model - model name of  app (example)

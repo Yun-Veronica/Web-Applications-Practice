@@ -5,7 +5,7 @@
 <!--<a href="/?page={{ page }}">Далее</a>-->
 
     {% for p in paginator.page_range %}
-        {% if p.number == page.number %}
+        {% if p == page.number %}
             <li class="active">        </li>
         {% else %}
             <li> </li>
