@@ -10,7 +10,7 @@
         <h1><a href="/"> Questions&Answers </a></h1>
         <div class="Questions">
             {% for post in posts %}
-                <p><a href="questions/{{ post.pk }}">{{ post.title }}</a></p>
+                <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
             {% endfor %}
             <nav><ul class="pagination" style="margin:5px; padding:10px" >
                 {% for p in paginator.page_range %}

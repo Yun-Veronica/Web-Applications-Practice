@@ -22,7 +22,7 @@ from qa import views
 
 urlpatterns = [
     url('404', views.handler404),
-    url(r'^$', views.main_page, name='main_page'),
+    url(r'^ /?page=\d+/$', views.main_page, name='main_page'),
     url(r'^login/.*$', views.test),
     url(r'^signup/.*$', views.test),
     url(r'^questions/\d+/$', views.question_page),
