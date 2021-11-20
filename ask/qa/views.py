@@ -22,25 +22,25 @@ def question_page(request):
     try:
         id = request.GET.get('id')
         question = Question.objects.get(pk=id)
-    except :
+    except Question.DoesNotExist:
         raise Http404
     return render(request, 'question_page_pattern.html', {'posts': question, })
-
+# qa.models.Question.DoesNotExist: Question matching query does not exist.
 
 def main_page(request):
     posts = Question.objects.new()
     try:
         limit = request.GET.get('limit', 10)
-        page = request.GET.get('page')
+        page = request.GET.get('page',1)
         paginator = Paginator(posts, limit)
         template = loader.get_template('main_page.html')
         paginator.base_url = '/?page='
         page = paginator.page(page)  # Page
-    except :
-        raise Http404(Exception)
-    return render(request, 'popular_questions_page.html', {'posts': page.object_list, 'paginator': paginator, 'page': page, })
-    # return HttpResponse(
-    #     template.render({'posts': page.object_list, 'paginator': paginator, 'page': page, 'request': request}))
+    except Question.DoesNotExist :
+        raise Http404()
+    #return render(request, 'main_page.html', {'posts': page.object_list, 'paginator': paginator, 'page': page, })
+    return HttpResponse(
+         template.render({'posts': page.object_list, 'paginator': paginator, 'page': page, 'request': request}))
 
 
 def popular_pages(request, *args, **kwargs):
@@ -49,12 +49,12 @@ def popular_pages(request, *args, **kwargs):
         page_num=request.split('/')[1]
         posts = Question.objects.popular()
         limit = request.GET.get('limit', 10)
-        page = request.GET.get(1)
+        page = request.GET.get('page', 1)
         paginator = Paginator(posts, limit)
         paginator.base_url = '/popular/?page='
         page = paginator.page(page)
 
-    except :
+    except Question.DoesNotExist:
         raise Http404(page_num)
 
     return render(request, 'popular_questions_page.html', {'posts': page.object_list, 'paginator': paginator, 'page': page, })
