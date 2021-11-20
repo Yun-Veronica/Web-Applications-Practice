@@ -22,7 +22,7 @@ def question_page(request):
     try:
         id = request.GET.get('id')
         question = Question.objects.get(pk=id)
-    except Question.objects.DoesNotExist():
+    except :
         raise Http404
     return render(request, 'question_page_pattern.html', {'posts': question, })
 
@@ -36,7 +36,7 @@ def main_page(request):
         template = loader.get_template('main_page.html')
         paginator.base_url = '/?page='
         page = paginator.page(page)  # Page
-    except Question.objects.DoesNotExist():
+    except :
         raise Http404(Exception)
     return render(request, 'popular_questions_page.html', {'posts': page.object_list, 'paginator': paginator, 'page': page, })
     # return HttpResponse(
