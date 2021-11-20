@@ -36,6 +36,7 @@ class Answer(models.Model):
     added_at = models.DateTimeField(null=True,blank=True,auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    objects = models.Manager()
 
     def __str__(self):
         return self.text

@@ -8,18 +8,17 @@
         </div>
         <div class="Questions">
             {% for post in posts %}
-                <p><a href="questions/">{{ post.title }}</a></p>
+                <p><a href="questions/{{ post.pk }}">{{ post.title }}</a></p>
             {% endfor %}
             <nav><ul class="pagination">
-                {% for p in paginator page_range %}
-                    {% if p.number == page.number %}
-                        <li class="active">        </li>
+                {% for p in paginator.page_range %}
+                    {% if p == page.number %}
+                        <li class="active"></li>
                     {% else %}
-                        <li>
+                        <li><a href="{{ paginator.baseurl }}{{ p }}">{{ p }}</a></li>
                     {% endif %}
-                        <a href="{{ paginator.baseurl }}{{ p.number }}">{{ p.number }}</a>
-                        </li>
                 {% endfor %}
+                <a href="/?page={{ p }}">Далее</a>
             </ul></nav>
         </div>
     </body>

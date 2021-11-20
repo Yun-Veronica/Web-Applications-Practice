@@ -11,16 +11,14 @@
                 <p><a href="questions/{{ post.pk }}">{{ post.title }}</a></p>
             {% endfor %}
             <nav><ul class="pagination">
-            <!--<a href="/?page={{ page }}">Далее</a>-->
-
                 {% for p in paginator.page_range %}
                     {% if p == page.number %}
-                        <li class="active">        </li>
+                        <li class="active"></li>
                     {% else %}
-                        <li> </li>
+                        <li><a href="{{ paginator.baseurl }}{{ p }}">{{ p }}</a></li>
                     {% endif %}
-                        <a href="{{ paginator.baseurl }}{{ p }}">{{ p }}</a>
                 {% endfor %}
+                <a href="/?page={{ p }}">Далее</a>
             </ul></nav>
         </div>
     </body>

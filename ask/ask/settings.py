@@ -27,7 +27,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'qa',
+    # 'qa',
+    'ask.qa',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
